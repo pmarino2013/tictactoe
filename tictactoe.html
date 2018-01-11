@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="sweetalert.css">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+    <center>
+    <table>
+      <tr>
+        <td style="border-bottom: 2px solid black;" id="c1"></td>
+        <td style="border-left: 2px solid black;border-bottom: 2px solid black;" id="c2"></td>
+        <td style="border-left: 2px solid black;border-bottom: 2px solid black;" id="c3"></td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 2px solid black;" id="c4"></td>
+        <td style="border-left: 2px solid black;border-bottom: 2px solid black;" id="c5"></td>
+        <td style="border-left: 2px solid black;border-bottom: 2px solid black;" id="c6"></td>
+      </tr>
+      <tr>
+        <td id="c7"></td>
+        <td style="border-left: 2px solid black;" id="c8"></td>
+        <td style="border-left: 2px solid black;" id="c9"></td>
+      </tr>
+    </table>
+  </center>
+
+
+  <script src="sweetalertmin.js"></script>
+  <script type="text/javascript">
+  const celda1 = document.getElementById("c1")
+  const celda2 = document.getElementById("c2")
+  const celda3 = document.getElementById("c3")
+  const celda4 = document.getElementById("c4")
+  const celda5 = document.getElementById("c5")
+  const celda6 = document.getElementById("c6")
+  const celda7 = document.getElementById("c7")
+  const celda8 = document.getElementById("c8")
+  const celda9 = document.getElementById("c9")
+
+  let contarX1=0
+  let contarX2=0
+  let contarX3=0
+  let contarX4=0
+  let contarX5=0
+  let contarX6=0
+  let contarX7=0
+  let contarX8=0
+  let contarX9=0
+
+  let contarO1=0
+  let contarO2=0
+  let contarO3=0
+  let contarO4=0
+  let contarO5=0
+  let contarO6=0
+  let contarO7=0
+  let contarO8=0
+  let contarO9=0
+
+  let contadorGlobal=9
+  let valor
+  let winner=false
+  celda1.value="false"
+  celda2.value="false"
+  celda3.value="false"
+  celda4.value="false"
+  celda5.value="false"
+  celda6.value="false"
+  celda7.value="false"
+  celda8.value="false"
+  celda9.value="false"
+
+  celda1.addEventListener('click', marcarCelda1)
+  celda2.addEventListener('click', marcarCelda2)
+  celda3.addEventListener('click', marcarCelda3)
+  celda4.addEventListener('click', marcarCelda4)
+  celda5.addEventListener('click', marcarCelda5)
+  celda6.addEventListener('click', marcarCelda6)
+  celda7.addEventListener('click', marcarCelda7)
+  celda8.addEventListener('click', marcarCelda8)
+  celda9.addEventListener('click', marcarCelda9)
+
+  function marcarCelda1(){
+    if(celda1.value==="false"){
+      celda1.innerHTML='X'
+      celda1.value="true"
+      contarX1=1
+      contadorGlobal=contadorGlobal-1
+      comprobacion()
+
+    }
+  }
+
+  function marcarCelda2(){
+    if(celda2.value==="false"){
+      celda2.innerHTML='X'
+      celda2.value="true"
+      contarX2=1
+      contadorGlobal=contadorGlobal-1
+      comprobacion()
+
+    }
+  }
+
+  function marcarCelda3(){
+    if(celda3.value==="false"){
+      celda3.innerHTML='X'
+      celda3.value="true"
+      contarX3=1
+      contadorGlobal=contadorGlobal-1
+      comprobacion()
+    }
+  }
+  function marcarCelda4(){
+    if(celda4.value==="false"){
+      celda4.innerHTML='X'
+      celda4.value="true"
+      contarX4=1
+      contadorGlobal=contadorGlobal-1
+      comprobacion()
+    }
+  }
+  function marcarCelda5(){
+    if(celda5.value==="false"){
+      celda5.innerHTML='X'
+      celda5.value="true"
+      contarX5=1
+      contadorGlobal=contadorGlobal-1
+      comprobacion()
+    }
+  }
+  function marcarCelda6(){
+    if(celda6.value==="false"){
+      celda6.innerHTML='X'
+      celda6.value="true"
+      contarX6=1
+      contadorGlobal=contadorGlobal-1
+      comprobacion()
+    }
+  }
+  function marcarCelda7(){
+    if(celda7.value==="false"){
+      celda7.innerHTML='X'
+      celda7.value="true"
+      contarX7=1
+      contadorGlobal=contadorGlobal-1
+      comprobacion()
+    }
+  }
+  function marcarCelda8(){
+    if(celda8.value==="false"){
+      celda8.innerHTML='X'
+      celda8.value="true"
+      contarX8=1
+      contadorGlobal=contadorGlobal-1
+      comprobacion()
+    }
+  }
+  function marcarCelda9(){
+    if(celda9.value==="false"){
+      celda9.innerHTML='X'
+      celda9.value="true"
+      contarX9=1
+      contadorGlobal=contadorGlobal-1
+      comprobacion()
+    }
+  }
+
+  function comprobacion(){
+    ganar()
+    setTimeout(function(){
+      if(contadorGlobal==0 && winner==false){
+
+          empate()
+
+      }else{
+
+
+        if(winner==false){
+        competidor()
+        }
+      }
+    },200)
+
+  }
+
+
+  function ganar(){
+    setTimeout(function(){
+      if(contarX1+contarX2+contarX3==3){
+      finished()
+    }
+    if(contarX4+contarX5+contarX6==3){
+    finished()
+    }
+    if(contarX7+contarX8+contarX9==3){
+    finished()
+    }
+    if(contarX1+contarX4+contarX7==3){
+    finished()
+    }
+    if(contarX2+contarX5+contarX8==3){
+    finished()
+    }
+    if(contarX3+contarX6+contarX9==3){
+    finished()
+    }
+    if(contarX1+contarX5+contarX9==3){
+    finished()
+    }
+    if(contarX3+contarX5+contarX7==3){
+    finished()
+    }
+
+    },200)
+  }
+
+  function finished(){
+    winner=true
+    swal({
+      title:'Ganaste!',
+      type:'success'
+    },function(){
+      location.reload()
+    })
+    //alert("Ganaste!!")
+
+  }
+
+  function aleatorioO(){
+    const min = 1
+    const max = 9
+    return Math.round(Math.random() * (max - min) + min)
+
+  }
+  function competidor(){
+  if(winner==false){
+      setTimeout(function(){
+        valor = aleatorioO()
+        if(valor==1){
+          if(celda1.value==="true"){
+             competidor()
+          }else{
+            celda1.innerHTML='O'
+            celda1.value="true"
+            contarO1=1
+            contadorGlobal=contadorGlobal-1
+            comprobacionO()
+            //perder()
+          }
+        }
+
+        if(valor==2){
+          if(celda2.value==="true"){
+            competidor()
+          }else{
+            celda2.innerHTML='O'
+            celda2.value="true"
+            contarO2=1
+            contadorGlobal=contadorGlobal-1
+            comprobacionO()
+            //perder()
+          }
+        }
+        if(valor==3){
+          if(celda3.value==="true"){
+             competidor()
+          }else{
+            celda3.innerHTML='O'
+            celda3.value="true"
+            contarO3=1
+            contadorGlobal=contadorGlobal-1
+            comprobacionO()
+            //perder()
+          }
+        }
+        if(valor==4){
+          if(celda4.value==="true"){
+             competidor()
+          }else{
+            celda4.innerHTML='O'
+            celda4.value="true"
+              contarO4=1
+              contadorGlobal=contadorGlobal-1
+              comprobacionO()
+              //perder()
+          }
+        }
+        if(valor==5){
+          if(celda5.value==="true"){
+            competidor()
+          }else{
+            celda5.innerHTML='O'
+            celda5.value="true"
+              contarO5=1
+              contadorGlobal=contadorGlobal-1
+              comprobacionO()
+              //perder()
+          }
+        }
+        if(valor==6){
+          if(celda6.value==="true"){
+             competidor()
+          }else{
+            celda6.innerHTML='O'
+            celda6.value="true"
+              contarO6=1
+              contadorGlobal=contadorGlobal-1
+              comprobacionO()
+              //perder()
+          }
+        }
+        if(valor==7){
+          if(celda7.value==="true"){
+            competidor()
+          }else{
+            celda7.innerHTML='O'
+            celda7.value="true"
+              contarO7=1
+              contadorGlobal=contadorGlobal-1
+              comprobacionO()
+              //perder()
+          }
+        }
+        if(valor==8){
+          if(celda8.value==="true"){
+            competidor()
+          }else{
+            celda8.innerHTML='O'
+            celda8.value="true"
+              contarO8=1
+              contadorGlobal=contadorGlobal-1
+              comprobacionO()
+              //perder()
+          }
+        }
+        if(valor==9){
+          if(celda9.value==="true"){
+             competidor()
+          }else{
+            celda9.innerHTML='O'
+            celda9.value="true"
+              contarO9=1
+              contadorGlobal=contadorGlobal-1
+              comprobacionO()
+              //perder()
+          }
+        }
+
+      },300)
+
+      }
+
+  }
+
+  function comprobacionO(){
+    if(contadorGlobal==0){
+      if(winner==false){
+        empate()
+      }
+    }else{
+    perder()
+    }
+
+  }
+
+
+  function empate(){
+
+      swal({
+        title:'Empate',
+        type:"info"
+
+      },function(){
+        location.reload()
+      })
+
+
+    }
+
+
+
+  function perder(){
+
+      setTimeout(function(){
+        if(contarO1+contarO2+contarO3==3){
+        loser()
+          }
+      if(contarO4+contarO5+contarO6==3){
+      loser()
+      }
+      if(contarO7+contarO8+contarO9==3){
+      loser()
+      }
+      if(contarO1+contarO4+contarO7==3){
+      loser()
+      }
+      if(contarO2+contarO5+contarO8==3){
+      loser()
+      }
+      if(contarO3+contarO6+contarO9==3){
+      loser()
+      }
+      if(contarO1+contarO5+contarO9==3){
+      loser()
+      }
+      if(contarO3+contarO5+contarO7==3){
+      loser()
+      }
+
+      },200)
+
+
+
+
+  }
+  function loser(){
+    winner=true
+    swal({
+      title:'Perdiste',
+      type:"error"
+
+    },function(){
+      location.reload()
+    })
+
+
+
+  }
+
+  </script>
+  </body>
+</html>

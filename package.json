@@ -1,0 +1,23 @@
+{
+  "name": "tictactoe",
+  "version": "0.1.0",
+  "description": "Juego de ta te ti o tres en raya",
+  "main": "tictactoe.html",
+  "scripts": {
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pmarino2013/tictactoe.git"
+  },
+  "keywords": [
+    "tateti",
+    "tres",
+    "en",
+    "raya",
+    "tictactoe"
+  ],
+  "author": "pablo <pmarino2013@gmail.com> (https://twitter.com/pablomarino8)",
+  "license": "MIT",
+
+}
